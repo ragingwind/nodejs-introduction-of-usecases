@@ -1,16 +1,15 @@
-# nodejs-tasting
+# nodejs-101
 
-> Tasting presentation for Node.js. Brief introduction to practical usecase in Node.js applications.
+> 101 presentation for Node.js. Brief introduction to practical usecase in Node.js applications.
 
 # Table of contents
 
 - Understanding Node(.js)
-- Node APIs
-- Web Applications with Node 
-- CLI(Script) with Node
-- Node Package: Making, using and publishing a node package
-- Desktop Applications with Node
-- IoT(BLE) Applications with Node
+- Getting Started Node
+- Node Package
+- Node for Web Applications 
+- Node for Desktop Applications
+- Node for IoT(BLE)
 
 # License
 

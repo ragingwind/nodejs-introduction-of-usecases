@@ -427,9 +427,90 @@ fs.createReadStream('bigfile.txt')
 		doSomethingSpecial();
 	});
 ```
+
 ---
 
-# Node for Web Application
+![35%](https://www.npmjs.com/static/images/npm-logo.svg)
+
+# Node Packages
+
+- node 의 시작과 끝은 npm (with cli)
+- 수십가지의 도구들이 npm 으로 제공
+- [신망](https://npm-stat.com/charts.html?author=sindresorhus)있고 유지보수(contribution)가 잘 되고 사용자가 많은(like) 모듈을 사용
+- Javascript 개발을 위한 도구(shell script)도 Javascript 로 개발
+
+---
+
+![35%](https://www.npmjs.com/static/images/npm-logo.svg)
+
+## Shell Script with Node
+
+```js
+#!/usr/bin/env node
+
+// parse argument and options
+const argv = process.argv.slice(2);
+
+do_work(argv);
+
+// optional, if no job in task
+// prevent to process exit immediately
+process.stdin.resume();
+```
+
+---
+
+![35%](https://www.npmjs.com/static/images/npm-logo.svg)
+
+## Publishing Your Node Package for All
+
+- [누구든지](https://www.npmjs.com/~ragingwind), [어떤](https://www.npmjs.com/package/daum) node package 든 publish 가능. 대박나거나 꾸준하다면 [랭킹도](http://rankedin.kr/users)
+- 재사용성이 높거나 유용한 모듈, 도구들을 제작 배포할 수 있는 플랫폼
+- 압도적 숫자의 패키지, 자유스러운 리인벤트-휠(YAFS) 문화
+
+---
+
+![35%](https://www.npmjs.com/static/images/npm-logo.svg)
+
+### Making your first npm package
+
+- 준비물: github 계정과 리퍼지토리, [npm 개발자 등록](https://docs.npmjs.com/misc/developers#create-a-user-account)
+
+```sh
+# making directory
+mkdir [YOURID] && cd [YOURID]
+
+# creat and code up at index.js
+touch index.js && touch test.js
+
+# init project and input  `package name`, `main`, git address, and more
+npm init
+
+# git init, commit and push
+git init && git remote add origin [YOUR-REPO]
+git add -A && git commit -a -m 'init' && git push origin master
+
+# publish (or version up)
+npm publish
+```
+
+---
+
+![35%](https://s.gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9?size=496&default=retro)
+
+## Protips: Yeoman [generator-nm](https://github.com/sindresorhus/generator-nm)
+
+```sh
+# Install with yeoman
+npm install --g yo generator-nm
+
+# Scaffolding node module with cli option
+yo nm --cli
+```
+
+---
+
+# Node for Web Applications
 
 - express.js: HTTP server for serving static file serving and response
 - socket.io: Connection-oriented chat service on browser via [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
@@ -533,9 +614,9 @@ fs.createReadStream('bigfile.txt')
 
 - WebSocket 프로토콜의 node 구현체, node 활성화에 큰 기여
 - WebSocket?
-	- HTTP 를 이용하는 (handsaking) 연결지향적인(TCP)이며 양방향 커뮤니케이션(Full-duplex) 이 가능한 프로토콜
-	- 웹서버, 브라우저에서 이용가능
-	- 실시간 커뮤니케이션에 사용. 채팅, 알림등
+  - HTTP 를 이용하는 (handsaking) 연결지향적인(TCP)이며 양방향 커뮤니케이션(Full-duplex) 이 가능한 프로토콜
+  - 웹서버, 브라우저에서 이용가능
+  - 실시간 커뮤니케이션에 사용. 채팅, 알림등
 - Install: `yarn add --dev socket.io`
 
 ---
@@ -567,10 +648,10 @@ fs.createReadStream('bigfile.txt')
 - 각각의 도구 사용법과 각종 플러그인과 의존성 패키지의 버전 충돌로 파편화가 심해짐
 - 오버-툴링이 뉴비들의 러닝커브를 급상승 시킴. [2016년에 자바스크립트를 배우는 기분](https://goo.gl/nAzzkC)
 - 점차 프레임워크에서 자체적으로 개발, 구성한 도구 제공
-	- React: [create-react-app](https://github.com/facebookincubator/create-react-app)
-	- AngularJS 2: [Angular CLI](https://cli.angular.io/)
-	- Polymer: [Polymer CLI](https://www.polymer-project.org/1.0/docs/tools/polymer-cli) 
-	- Vue.js: [Vue CLI](https://github.com/vuejs/vue-cli)
+  - React: [create-react-app](https://github.com/facebookincubator/create-react-app)
+  - AngularJS 2: [Angular CLI](https://cli.angular.io/)
+  - Polymer: [Polymer CLI](https://www.polymer-project.org/1.0/docs/tools/polymer-cli) 
+  - Vue.js: [Vue CLI](https://github.com/vuejs/vue-cli)
 - 사용되는 툴들의 종류, 버전 그리고 플러그인을 직접관리 -> 프레임워크 레벨에서 주도권을 가지고 관리가능
 - 생성된 프로젝트에선 npm scripts 로 사용 -> node 환경에서 일관되고 쉬운 사용법
 - 하지만 뚜껑을 열면?
@@ -646,87 +727,7 @@ export default App;
 
 ---
 
-![35%](https://www.npmjs.com/static/images/npm-logo.svg)
-
-## Node Packages
-
-- node 의 시작과 끝은 npm (with cli)
-- 수십가지의 도구들이 npm 으로 제공
-- [신망](https://npm-stat.com/charts.html?author=sindresorhus)있고 유지보수(contribution)가 잘 되고 사용자가 많은(like) 모듈을 사용
-- Javascript 개발을 위한 도구(shell script)도 Javascript 로 개발
-
----
-
-![35%](https://www.npmjs.com/static/images/npm-logo.svg)
-
-## Shell Script with Node
-
-```js
-#!/usr/bin/env node
-
-// parse argument and options
-const argv = process.argv.slice(2);
-
-do_work(argv);
-
-// optional, if no job in task
-// prevent to process exit immediately
-process.stdin.resume();
-```
-
----
-
-![35%](https://www.npmjs.com/static/images/npm-logo.svg)
-
-## Publishing Your Node Package for All
-
-- [누구든지](https://www.npmjs.com/~ragingwind), [어떤](https://www.npmjs.com/package/daum) node package 든 publish 가능. 대박나거나 꾸준하다면 [랭킹도](http://rankedin.kr/users)
-- 재사용성이 높거나 유용한 모듈, 도구들을 제작 배포할 수 있는 플랫폼
-- 압도적 숫자의 패키지, 자유스러운 리인벤트-휠(YAFS) 문화
-
----
-
-![35%](https://www.npmjs.com/static/images/npm-logo.svg)
-
-### Making your first npm package
-
-- 준비물: github 계정과 리퍼지토리, [npm 개발자 등록](https://docs.npmjs.com/misc/developers#create-a-user-account)
-
-```sh
-# making directory
-mkdir [YOURID] && cd [YOURID]
-
-# creat and code up at index.js
-touch index.js && touch test.js
-
-# init project and input  `package name`, `main`, git address, and more
-npm init
-
-# git init, commit and push
-git init && git remote add origin [YOUR-REPO]
-git add -A && git commit -a -m 'init' && git push origin master
-
-# publish (or version up)
-npm publish
-```
-
----
-
-![35%](https://s.gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9?size=496&default=retro)
-
-## Protips: Yeoman [generator-nm](https://github.com/sindresorhus/generator-nm)
-
-```sh
-# Install with yeoman
-npm install --g yo generator-nm
-
-# Scaffolding node module with cli option
-yo nm --cli
-```
-
----
-
-# Node for Desktop Application
+# Node for Desktop Applications
 
 - UI 를 브라우저 렌더러에 의존하는 하이브리드 node 어플리케이션
 - 시스템 콜은 node 에서 어플리케이션은 웹앱으로
@@ -741,7 +742,7 @@ yo nm --cli
 - node, 웹 관련 기술을 모두 사용가능
 - 크로스 플랫폼 지원, Auto update, App store, ARM device 와 플랫폼 기능들 추가 중
 - 오픈소스, 훌륭한 에코 시스템[[1]](https://github.com/electron-userland), [[2]](https://github.com/sindresorhus/awesome-electron)과 [활발한 개발](https://github.com/electron/electron/graphs/contributors)
-	- Latest Chromium and Node
+  - Latest Chromium and Node
 - npm 패키지 (거의 대부분) 그대로 사용가능
 - 개발되는 많은 사용/오픈 [어플리케이션들](http://electron.atom.io/apps/), Atom, Slack, VSCode, Wordpress 등
 - 개발도구 지원이 훌륭 [Devtron](http://electron.atom.io/devtron/)(Debug), [Spectron](http://electron.atom.io/spectron/)(Test)
@@ -776,7 +777,6 @@ yo nm --cli
 
 ![center 42%](electron-chromium-process.png)
 
-
 ---
 
 ![50%](https://camo.githubusercontent.com/5dd01312b30468423cb45b582b83773f5a9019bb/687474703a2f2f656c656374726f6e2e61746f6d2e696f2f696d616765732f656c656374726f6e2d6c6f676f2e737667)
@@ -796,24 +796,24 @@ or [electron-quick-start: Clone to try a simple Electron app](https://goo.gl/xV0
 ## Hello! Electron
 
 1. Setup the project
-    ```sh
+   ```sh
     # setup project and install prebuilt electron.
     yarn init && yarn add --dev electron
-    ```
+   ```
 
-1. Configure package.json
-    ```js
+2. Configure package.json
+   ```js
     {
         ...
         "main": "main.js"
         "scripts": {"start" : "electron ."}
     }
-    ```
-  
+   ```
+
 ---
 
 3. main.js, for main process
-    ```js
+   ```js
     const {app, BrowserWindow} = require('electron');
     let mainWindow;
 
@@ -826,18 +826,18 @@ or [electron-quick-start: Clone to try a simple Electron app](https://goo.gl/xV0
     app.on('window-all-closed', () => {
       if (process.platform !== 'darwin') { app.quit() }
     });
-    ```
+   ```
 
 4. index.html, for main view in renderer. and say Hello
-	```html
+   ```html
     <h1>Hello!<h1>
     <ul id="files"></ul>
     <script type="text/javascript" src="rendere.js"></script>
-    ```
+   ```
 ---
 
 5. renderer.js, for browser process
-    ```js
+   ```js
     const fs = require('fs');
 
     fs.readdir('.', (err, files) => {
@@ -846,11 +846,11 @@ or [electron-quick-start: Clone to try a simple Electron app](https://goo.gl/xV0
         return `<li>${f}</li>`;
       }).join('\n');
     });
-    ```
+   ```
 6. run electron
-	```sh
+   ```sh
     yarn start
-    ```
+   ```
 ---
 
 ![50%](https://camo.githubusercontent.com/5dd01312b30468423cb45b582b83773f5a9019bb/687474703a2f2f656c656374726f6e2e61746f6d2e696f2f696d616765732f656c656374726f6e2d6c6f676f2e737667)
