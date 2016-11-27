@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>socket.io client</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/socket-io/socket.io.js"></script>
+  </head>
+  <body>
+    <div>
+      <ul id="chat"></ul>
+    </div>
+    <div>
+      <input type="text" id="input" value="">
+    </div>
+  </body>
+  <script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', () => {
+      // make a connection
+      const socket = io();
+
+      // query elements
+      const input = document.querySelector('#input');
+      const chat = document.querySelector('#chat');
+
+      // add chat message as li element
+      function addChat(m) {
+        const li = document.createElement('li');
+        const tn = document.createTextNode(m);
+        li.appendChild(tn);
+        chat.appendChild(li);
+      }
+
+      // bind chat event from socket.io
+      socket.on('chat', msg => {
+        addChat(msg)
+      });
+
+      // bind keyevent
+      input.addEventListener('keydown', e => {
+        if (e.code === 'Enter') {
+          // emit event to server with message
+          socket.emit('chat', input.value);
+        }
+      });
+
+      input.focus();
+
+      
+    });
+  })();
+  </script>
+</html>

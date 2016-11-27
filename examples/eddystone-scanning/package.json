@@ -1,0 +1,12 @@
+{
+  "name": "eddystone-scanning",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "eddystone-beacon-scanner": "^3.0.0"
+  },
+  "scripts": {
+    "start": "node ."
+  }
+}

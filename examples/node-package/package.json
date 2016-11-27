@@ -1,0 +1,15 @@
+{
+  "name": "ragingwind",
+  "version": "1.0.0",
+  "description": "Return about ragingwind",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "url": "https://github.com/ragingwind/ragingwind",
+    "type": "git"
+  },
+  "author": "ragingwind",
+  "license": "MIT"
+}
