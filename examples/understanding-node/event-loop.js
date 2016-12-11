@@ -1,12 +1,18 @@
 // getting result in order
 
+// call with SetImmediate
 setImmediate(() => console.log("1"));
-setTimeout(() => console.log("2"), 0);
-Promise.resolve().then(() => console.log('3'));
-setTimeout(() => console.log("4"), 0);
-(() => console.log('5'))();
-Promise.resolve().then(() => console.log('6'));
 
+// call with setTimeout
+setTimeout(() => console.log("2"), 0);
+
+// call with Promise in sync
+Promise.resolve().then(() => console.log('3'));
+
+// IIFE, immediately-invoked function expression
+(() => console.log('5'))();
+
+// last call for app
 process.on('beforeExit', () => {
     console.log('7');
 });
