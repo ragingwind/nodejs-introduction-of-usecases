@@ -7,6 +7,17 @@
 
 ---
 
+![](images/jimmymoon.png)
+
+- [Jimmy Moon (문현경 / @ragingwind)](https://ragingwind.me)
+- [Google Developer Expert](https://developers.google.com/experts/people/jimmy-moon)
+- [Node and Web Tooling Project Maintainer (Yeoman and more)](https://github.com/ragingwind)
+- KOSSLAB 2기
+
+---
+
+
+
 # Understanding Node(.js)
 
 - 공식적으로는 Node(node), 단어 혼동을 피하기 위해 Node.js
@@ -19,7 +30,7 @@
 
 ---
 
-![](v8.png)
+![](images/v8.png)
 
 ## V8 Javascript Engine
 
@@ -56,35 +67,75 @@
 
 ----
 
-![bg original 75%](everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_1.png)
+### Blocking of C
+
+```
+#include "stdio.h"
+#include <unistd.h>
+
+void fp() {
+  printf("3\n");
+}
+
+void fp_call(void (*fp)(void)) {
+  fp();
+}
+
+int main() {
+  printf("1\n");  
+  printf("2\n");
+  usleep(1000 * 2000);
+  fp_call(&fp);
+  return 0;
+}
+```
 
 ----
 
-![bg original 75%](everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_2.png)
+### Non-Blocking of Node
+
+```js
+function fp() {
+  console.log('2');
+}
+console.log('1');
+
+setTimeout(fp, 2000);
+
+console.log('3');
+```
+
+---
+
+![bg original 75%](images/everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_1.png)
 
 ----
 
-![bg original 75%](everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_3.png)
+![bg original 75%](images/everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_2.png)
 
 ----
 
-![bg original 75%](everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_4.png)
+![bg original 75%](images/everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_3.png)
 
 ----
 
-![bg original 75%](everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_6.png)
+![bg original 75%](images/everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_4.png)
 
 ----
 
-![bg original 75%](everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_7.png)
+![bg original 75%](images/everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_6.png)
 
 ----
 
-![bg original 75%](everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_8.png)
+![bg original 75%](images/everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_7.png)
 
 ----
 
-![bg original 75%](everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_9.png)
+![bg original 75%](images/everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_8.png)
+
+----
+
+![bg original 75%](images/everything_you_need_to_know_about_node.js_event_loop_-_bert_belder_-_9.png)
 
 ----
 
@@ -92,38 +143,41 @@
 ## Event Loop
 
 ```js
+// getting result in order
+
+// call with SetImmediate
 setImmediate(() => console.log("1"));
+
+// call with setTimeout
 setTimeout(() => console.log("2"), 0);
+
+// call with Promise in sync
 Promise.resolve().then(() => console.log('3'));
-setTimeout(() => console.log("4"), 0);
+
+// IIFE, immediately-invoked function expression
 (() => console.log('5'))();
-Promise.resolve().then(() => console.log('6'));
+
+// last call for app
 process.on('beforeExit', () => {
     console.log('7');
 });
 ```
 
-- Question?: 이벤트 일어나는 순서를 추측해보세요
-  - 1: 3 5 6 1 2 4 7
-  - 2: 5 3 6 1 2 4 7
-  - 3: 3 5 6 2 4 1 7
-  - 4: 5 3 6 2 4 1 7
-
 ----
 
-![](nodejs.png)
+![](images/nodejs.png)
 
 ## Open Source, Amazing Communities for Node
 
 ----
 
-![bgoriginal](npm-module-count.png)
+![original center](images/npm-module-count.png)
 
 ----
 
-### [How many packages are downloaded?](http://blog.npmjs.org/post/143451680695/how-many-npm-users-are-there) A BILLION
+### [How many packages are downloaded?](http://blog.npmjs.org/post/143451680695/how-many-npm-users-are-there) A BILLION (10억)
 
-![](https://cloud.githubusercontent.com/assets/185893/14835901/412a8096-0bc1-11e6-9b2a-fb1b3c9b3973.png)
+![center](https://cloud.githubusercontent.com/assets/185893/14835901/412a8096-0bc1-11e6-9b2a-fb1b3c9b3973.png)
 
 ----
 
@@ -382,7 +436,7 @@ server.listen(8080, () => {
 
 ### Stream
 
-![100% center](stream-transform-diagram.png)
+![100% center](images/stream-transform-diagram.png)
 
 - node 에서 기본적(비동기적)으로 데이터를 주고 받는 방법
 - 대용량 파일이나 네트웍에서 들어오는 데이터(Stream)를 처리하기 용이
@@ -635,11 +689,11 @@ yo nm --cli
 
 ---
 
-![bg original 85%](tools-for-webapp.png)
+![bg original 85%](images/tools-for-webapp.png)
 
 ---
 
-![bg original 100%](gears.jpg)
+![bg original 100%](images/gears.jpg)
 
 ---
 
@@ -658,11 +712,11 @@ yo nm --cli
 
 ---
 
-![100% center](angular2-cli.png)
+![100% center](images/angular2-cli.png)
 
 ---
 
-![50%](polymer-cli.png)
+![50%](images/polymer-cli.png)
 
 ```sh
 npm install -g polymer-cli
@@ -674,7 +728,7 @@ polymer serve --open
 
 ---
 
-![130%](vue-cli.png)
+![130%](images/vue-cli.png)
 
 ```sh
 npm install -g vue-cli
@@ -689,7 +743,7 @@ yarn run dev
 
 ---
 
-![70%](create-react-app.png)
+![70%](images/create-react-app.png)
 
 ```sh
 npm install -g create-react-app
@@ -751,43 +805,43 @@ export default App;
 
 ![50%](https://camo.githubusercontent.com/5dd01312b30468423cb45b582b83773f5a9019bb/687474703a2f2f656c656374726f6e2e61746f6d2e696f2f696d616765732f656c656374726f6e2d6c6f676f2e737667)
 
-![center](electron-chart.png)
+![center](images/electron-chart.png)
 
 ---
 
 ![50%](https://camo.githubusercontent.com/5dd01312b30468423cb45b582b83773f5a9019bb/687474703a2f2f656c656374726f6e2e61746f6d2e696f2f696d616765732f656c656374726f6e2d6c6f676f2e737667)
 
-![80% center](electron-platform.png)
+![80% center](images/electron-platform.png)
 
 ---
 
 ![50%](https://camo.githubusercontent.com/5dd01312b30468423cb45b582b83773f5a9019bb/687474703a2f2f656c656374726f6e2e61746f6d2e696f2f696d616765732f656c656374726f6e2d6c6f676f2e737667)
 
-![center](electron-arch.png)
+![center](images/electron-arch.png)
 
 ---
 
 ![50%](https://camo.githubusercontent.com/5dd01312b30468423cb45b582b83773f5a9019bb/687474703a2f2f656c656374726f6e2e61746f6d2e696f2f696d616765732f656c656374726f6e2d6c6f676f2e737667)
 
-![center 42%](electron-process.png)
+![center 42%](images/electron-process.png)
 
 ---
 
 ![50%](https://camo.githubusercontent.com/5dd01312b30468423cb45b582b83773f5a9019bb/687474703a2f2f656c656374726f6e2e61746f6d2e696f2f696d616765732f656c656374726f6e2d6c6f676f2e737667)
 
-![center 42%](electron-chromium-process.png)
+![center 42%](images/electron-chromium-process.png)
 
 ---
 
 ![50%](https://camo.githubusercontent.com/5dd01312b30468423cb45b582b83773f5a9019bb/687474703a2f2f656c656374726f6e2e61746f6d2e696f2f696d616765732f656c656374726f6e2d6c6f676f2e737667)
 
-![center 42%](electron-event-loop.png)
+![center 42%](images/electron-event-loop.png)
 
 ---
 
 ![50%](https://camo.githubusercontent.com/5dd01312b30468423cb45b582b83773f5a9019bb/687474703a2f2f656c656374726f6e2e61746f6d2e696f2f696d616765732f656c656374726f6e2d6c6f676f2e737667)
 
-[![center](electron-apis.png)](https://github.com/electron/electron-api-demos)
+[![center](images/electron-apis.png)](https://github.com/electron/electron-api-demos)
 
 or [electron-quick-start: Clone to try a simple Electron app](https://goo.gl/xV0Vn1)
 
@@ -911,7 +965,7 @@ yo electron
 
 ## BLE (Bluetooth 4.x, Bluetooth Low Energy)
 
-![center](ble.jpg)
+![center](images/ble.jpg)
 
 ---
 
@@ -928,7 +982,7 @@ yo electron
 
 ## Beacon
 
-![](eddystone-protocol.png)
+![](images/eddystone-protocol.png)
 
 - 별도의 Advertising 데이터 타입(프로토콜), UUID와 그외 커스텀 헤더
 - paring / bonding 을 생략하고 Advertising pacaket 으로 특정 데이터(url 등) 전송
@@ -936,11 +990,11 @@ yo electron
 
 ---
 
-![](eddystone-service.png)
+![](images/eddystone-service.png)
 
 ---
 
-![](eddystone-usecase.jpg)
+![](images/eddystone-usecase.jpg)
 
 ---
 
@@ -988,6 +1042,12 @@ EddystoneBeaconScanner.on('lost', function(beacon) {
 
 EddystoneBeaconScanner.startScanning(true);
 ```
+
+---
+
+![40% center](images/yeobara.png)	
+
+[여바라(Yeobara) - 2016 구글 해커톤, Eddystone, Nearby](https://github.com/yeobara)
 
 ---
 
