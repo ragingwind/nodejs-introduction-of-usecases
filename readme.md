@@ -7,17 +7,6 @@
 
 ---
 
-![](images/jimmymoon.png)
-
-- [Jimmy Moon (문현경 / @ragingwind)](https://ragingwind.me)
-- [Google Developer Expert](https://developers.google.com/experts/people/jimmy-moon)
-- [Node and Web Tooling Project Maintainer (Yeoman and more)](https://github.com/ragingwind)
-- KOSSLAB 2기
-
----
-
-
-
 # Understanding Node(.js)
 
 - 공식적으로는 Node(node), 단어 혼동을 피하기 위해 Node.js
