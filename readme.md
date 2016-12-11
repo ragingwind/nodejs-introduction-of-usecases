@@ -1,4 +1,4 @@
-# nodejs-101
+# node-101
 
 > 101 presentation for Node.js. Brief introduction to practical usecase in Node.js applications.
 
